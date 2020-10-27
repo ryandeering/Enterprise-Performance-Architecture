@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3
 
 #Pulls image from https://hub.docker.com/_/python to use as a basis for the container.
 
