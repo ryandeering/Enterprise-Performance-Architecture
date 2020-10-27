@@ -1,7 +1,66 @@
 <html>
  <head>
+<title>Ryan Deering - X00144631 EPA CA1</title>
  </head>
  <body>
-     <h1>Ryan Deering X00144631 - EPA CA1</h1>
+     
+   
+     <h1>EPA CA1 - X00144631</h1>
+        <h2>Docker Tutorial:</h2>
+      <div class="steps">
+     <p>Welcome to my Docker tutorial. This tutorial assumes you have your Google Cloud instance set up, and are ready to go! <br> Docker is already installed on Google Cloud by default. So there is nothing to worry about in terms of setting up Docker. <br> Let us start!</p>
+        
+        <h3> Step 1:</h3>
+        <p>Fire up an instance of Google Cloud Shell. And use the <strong>dir</strong>  command to confirm you are in the root directory. <br> Start by using the <strong> mkdir </strong> command to create a new folder called CA1 where your previous labs are. <br>Then use the <strong>cd </strong> command to change your directory to CA1. </p>
+        
+        <h3> Step 2:</h3>
+        <p>Once you are in the CA1 folder, use the <strong>dir</strong> command to confirm nothing is in the folder. Now, we are going <br> to use the command line text editor, GNU Nano. Though you're welcome to use vi if you want. Weirdo. <br> Nano is accessed by simplying typing <strong>nano</strong> in the command prompt, however Nano can used to create <br> new files easily by typing <strong>nano</strong> then the filename you want. In our case, our file has no extension. <br> So our command will be:<br> <strong>nano Dockerfile</strong>
+        <br> This doesn't create a new file until Nano is saved, you can use CTRL + O for that. Once that is done, congrats!</p>
+        
+        <h3>Step 3:</h3>
+        <p>Now we can talk code. What do we need? Well first, we need to grab an image from Docker. We are going to use the <a href="https://hub.docker.com/_/python">Python 3 Docker image.</a><br> But why? Well, this image comes with an entirely functioning Python 3 install. It comes with the standard library of Python. <br> We will need this for our command later on. To pull the Python 3 image, make this the first line of your Dockerfile. <br> <strong>FROM python:3</strong> <br> This will pull the image from Docker to load into the container. Save your work in Nano by using CTRL + O. and exit using CTRL + X.<br></p>
+        
+        <h3>Step 4: </h3>
+        <p>Open up another instance of nano using the command <br> <strong>nano index.html </strong> <br> For now, use this placeholder. 
+        
+        
+         <strong> <br> <br> &lt;!doctype html&gt;<br>
+&lt;html&gt; <br>
+  &lt;head&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;body&gt;<br>
+    &lt;p&gt;Test!&gt;/p&gt;<br>
+  &lt;body&gt;<br>
+&lt;html&gt;<br> </strong> 
+            
+<br> This is just a simple placeholder to go into your index.html. It will need to be modified with instructions on how you completed the CA, <br> in your own words, inception, a a detailed description on how you completed it the CA, 4 links to outside resources and standard HTML design. <br> Got that? Good! CTRL + O and CTRL + X out of Nano.
+        </p> 
+        
+        <h3>Step 5: </h3>
+        <p>Enter <strong>nano Dockerfile</strong> into the terminal. We need to finish off the Dockerfile. Enter the next line of the Dockerfile, but first make sure the Dockerfile <br> and the index.html are in the same directory using <strong>dir</strong>. This is important as we need to copy the index.html to the container. <br> Enter the following line into the Dockerfile: <br> <br> <strong>COPY index.html /</strong>  <br> <br> This simply copies the index.html found in the same directory as the Dockerfile, to the root directory of the container. This will be displayed when the web server is ran. </p>
+        
+        <h3>Step 6:</h3>
+        <p>Now for our final step in the Dockerfile. The webserver. This is done through the CMD instruction in Docker, which pipes your input into the <br> container's terminal prompt. Since the Docker daemon always runs as sudo, there is no need to include it in your command. The command <br> we want to put in the Dockerfile is the following. <br> <br> <strong>CMD python3 -m http.server 8080</strong> <br> <br> What does this do? Well, we explained what 
+CMD does. python3 is the actual executable, or a link to it, to the Python interpreter. <br> The -m flag refers to modules, and we are telling it to run the http.server module, which is included as part of the Python standard library. <br> This will then run a very basic web server with absolutely no security. But this is just for demonstration, so there's no need to worry! <br> The number at the end is refering to the port the web server operates on. We are assuming you know about HTTP web ports already <br> but so we won't go into detail. CTRL + O and CTRL + X to save your work in Nano. </p>
+        
+        <h3>Step 7: </h3>
+        <p>So we're done with the Dockerfile and index.html is in a state to be ran. What now? Well, we have to actually run the container now. <br> But how?! We need to build the Docker image. Assuming you are in the same folder as the Dockerfile and index.html, run the following command. <br> <br> <strong>docker build .</strong> <br> <br> If you are asked to authorise a GCP API call, do it. It will let us build the container. Providing everything worked, you will see output <br> like "Pull complete..." "Successfully built 55f32a445efa." Docker has pulled the necessary layers that build up the image for you, and completed the instructions to help build it, in our case copying the index.html. Our container is successfully complete, yay!</p>
+        
+        <h3>Step 7: </h3>
+        <p>Now we need to run our container. Use the following command. <br><br> <strong>docker run -d -p 8080:8080 55f32a445efa</strong> <br><br> What does this do? Docker run, runs the container with the specified image ID. The <i>-d </i> flag means running the container in detached mode. This means that there's no external output to the terminal, running in the background. We can confirm the container is running with <strong>docker ps</strong>, so no big deal. <br> The <i>-p</i> part is binding ports together. See, the web server in the container is running on 8080, but that doesn't mean you're going to connect to <br> the Google Cloud instance and your HTML file is going to show up. No, you need to bind it <i>in the Google Cloud instance.</i> <br> -p 8080:8080 does exactly that. Binding the two ports together, container to server. It's time to test to see if the container works. <br> <br> Run <strong>docker ps</strong>. You should see a running container in there, with the commands you input showing in the COMMAND column. Great! <br><br> Now it is time to see if our server works. Go to the <strong>Web Preview</strong> part of our Cloud Shell. It is the icon to the right of the cog. Click <strong>Preview on port 8080.</strong> <br>If you're seeing your example text, congratulations!!!!!!!! Your server works.</p> 
+        
+        <h3>Step 8:</h3>
+        <p>Next we need to push our container to a repo. This assumes you've already pushed an image to the Container Registry before. <br> Our container is 55f32a445efa, so what we need to do is get the id of our Google Cloud project. You can get this from going to the Gooogle Cloud dashboard.<br> Mine is epa2020-290310. Now that we have both the Image ID and the Project ID, we can begin to push to our own private repo. How do we do this? <br><br> Use the following command. <br> <strong>docker tag c9386d2dfbf7 eu.gcr.io/epa2020-290310/ca1:latest</strong> <br><br> This 'tags' the Docker image with the registry name. This essentially tells the <strong>docker push</strong> command to push the image to a specific location, in this instance <br>being gcr.io and my repo. The repo, ca1, does not exist before this command. It is created with this command. <br><br> Next we need to push the container. Use the following command. <br><br> <strong>docker push  eu.gcr.io/epa2020-290310/ca1:latest </strong> <br><br> This will push the image into the repo, so it can be stored and called upon. <br><br> And that's it! You can now check the repo in your Container Registry, in Google Cloud. You've created a container, and uploaded it, and ran it! Congrats. <br> Don't forget to add your work to your Git repo. Do a git add *, git commit -m "CA1, then git push origin master!</p>
+        
+         </div>
+     
+     
+     <div class ="description"></div>
+     
+     <h2>Description of the CA</h2>
+     <p>I feel I have explicitly covered this CA already by the guide just above... but I will go into detail. <br> I used Docker a lot in my internship at the DEASP, it was essential for one of the projects I worked on. So I was already very familiar with Google Cloud <br> and Dockerfile instructions. So understanding what the Dockerfile had to do was very easy to grasp. The spec already pointed out the HTTP.monitor module <br> so that made the job even easier. I still had to look up the documentation  for that module, it was still easy to theoretically grasp what had to be done. <br> You just had to copy the already pre-made Python 3 image from Docker, copy a HTML file into the container (index.html, specficially. This is the standard web server html file name. I messed around with Apache as a kid.) <br>Then use the CMD instruction to actually execute the web server in one line. Thanks, Python! Very handy. <br> The more annoying and tricky part was pushing the image to the Container Registry in Google Cloud, but even then that wasn't really a problem. <br> You just had to tag the image with the repo you wanted, using your Google Cloud project id and creating your own private repo. Then pushing it to the repo. <br> And then include the link to the image in your final upload. The documentation is the more annoying part of this CA, honestly. The work itself is very easy. <br> 
+     </p>
+     
+     
  </body>
 </html>
