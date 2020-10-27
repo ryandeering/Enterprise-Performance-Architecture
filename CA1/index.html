@@ -55,11 +55,29 @@ CMD does. python3 is the actual executable, or a link to it, to the Python inter
          </div>
      
      
-     <div class ="description"></div>
+     <div class ="description">
      
      <h2>Description of the CA</h2>
      <p>I feel I have explicitly covered this CA already by the guide just above... but I will go into detail. <br> I used Docker a lot in my internship at the DEASP, it was essential for one of the projects I worked on. So I was already very familiar with Google Cloud <br> and Dockerfile instructions. So understanding what the Dockerfile had to do was very easy to grasp. The spec already pointed out the HTTP.monitor module <br> so that made the job even easier. I still had to look up the documentation  for that module, it was still easy to theoretically grasp what had to be done. <br> You just had to copy the already pre-made Python 3 image from Docker, copy a HTML file into the container (index.html, specficially. This is the standard web server html file name. I messed around with Apache as a kid.) <br>Then use the CMD instruction to actually execute the web server in one line. Thanks, Python! Very handy. <br> The more annoying and tricky part was pushing the image to the Container Registry in Google Cloud, but even then that wasn't really a problem. <br> You just had to tag the image with the repo you wanted, using your Google Cloud project id and creating your own private repo. Then pushing it to the repo. <br> And then include the link to the image in your final upload. The documentation is the more annoying part of this CA, honestly. The work itself is very easy. <br> 
      </p>
+     
+     </div> 
+    
+    <div class ="References">
+     
+     <h2>Resources</h2>
+     
+    <ul>
+        <li><a href="https://docs.python.org/3/library/http.server.html">http.server — HTTP servers — Python 3.9.0 documentation</a></li>
+  <li><a href="https://stackoverflow.com/questions/50821312/meaning-of-python-m-flag">Meaning of Python -m flag - Stack Overflow</a></li>
+  <li><a href="https://docs.docker.com/engine/reference/commandline/pull/">docker pull - Docker documentation</a></li>
+  <li><a href="https://cloud.google.com/container-registry/docs/quickstart">Quickstart for Container Registry - Google Cloud</a></li>
+    </ul>
+     
+     
+     </div>
+     
+     
      
      
  </body>
