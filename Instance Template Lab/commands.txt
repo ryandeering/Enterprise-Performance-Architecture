@@ -1,0 +1,14 @@
+gcloud compute firewall-rules create epa-lab-2020-fw --action=allow --direction=ingress --rules=tcp:8080
+
+gcloud compute instance-templates create-with-container epa2020-template --machine-type=n1-standard-1 --image-family=cos-stable --image-project=cos-cloud --tags=epa2020 --container-image=eu.gcr.io/epa2020-290310/careless-banking
+
+gcloud compute instance-templates list
+
+gcloud compute instance-groups managed create epa2020-mig --zone europe-west3-c --template epa2020-template --size 2
+
+Both containers display fine.
+
+gcloud compute instance-groups managed delete --zone europe-west3-c epa2020-mig
+gcloud compute instance-templates delete epa2020-template
+gcloud compute firewall-rules delete epa-lab-2020-fw 
+
