@@ -1,0 +1,4 @@
+2020-11-10 13:29:33.665 GMThelloGETc4d3z8auuqqn Function execution started
+2020-11-10 13:29:33.778 GMThelloGETc4d3z8auuqqn IP address of caller is: 2002:a03:2a44:0:b029:108:45fc:aff
+2020-11-10 13:29:33.778 GMThelloGETc4d3z8auuqqn This is a log file message.
+2020-11-10 13:29:33.782 GMThelloGETc4d3z8auuqqn Function execution took 118 ms, finished with status code: 200
