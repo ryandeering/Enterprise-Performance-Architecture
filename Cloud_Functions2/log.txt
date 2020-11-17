@@ -1,0 +1,15 @@
+
+2020-11-17 12:49:53.824 GMTCloud FunctionsCreateFunctionus-central1:helloGCSryandeering1@gmail.com {@type: type.googleapis.com/google.cloud.audit.AuditLog, authenticationInfo: {…}, authorizationInfo: […], methodName: google.cloud.functions.v1.CloudFunctionsService.CreateFunction, request: {…}, requestMetadata: {…}, resourceLocation: {…}, resourceName: projects/epa2020-290310/locations/us-central1…
+2020-11-17 12:50:52.544 GMTCloud FunctionsCreateFunctionus-central1:helloGCSryandeering1@gmail.com {@type: type.googleapis.com/google.cloud.audit.AuditLog, authenticationInfo: {…}, methodName: google.cloud.functions.v1.CloudFunctionsService.CreateFunction, resourceName: projects/epa2020-290310/locations/us-central1/functions/helloGCS, serviceName: cloudfunctions.googleapis.com, status: {…}}
+2020-11-17 12:55:20.611 GMTCloud FunctionsUpdateFunctionus-central1:helloGCSryandeering1@gmail.com {@type: type.googleapis.com/google.cloud.audit.AuditLog, authenticationInfo: {…}, authorizationInfo: […], methodName: google.cloud.functions.v1.CloudFunctionsService.UpdateFunction, request: {…}, requestMetadata: {…}, resourceLocation: {…}, resourceName: projects/epa2020-290310/locations/us-central1…
+{@type: type.googleapis.com/google.cloud.audit.AuditLog, authenticationInfo: {…}, authorizationInfo: […], methodName: google.cloud.functions.v1.CloudFunctionsService.UpdateFunction, request: {…}, requestMetadata: {…}, resourceLocation: {…}, resourceName: projects/epa2020-290310/locations/us-central1…
+2020-11-17 12:56:28.538 GMTCloud FunctionsUpdateFunctionus-central1:helloGCSryandeering1@gmail.com {@type: type.googleapis.com/google.cloud.audit.AuditLog, authenticationInfo: {…}, methodName: google.cloud.functions.v1.CloudFunctionsService.UpdateFunction, resourceName: projects/epa2020-290310/locations/us-central1/functions/helloGCS, serviceName: cloudfunctions.googleapis.com, status: {…}}
+2020-11-17 12:57:06.591 GMThelloGCSt6b7i1lkfdow Function execution started
+2020-11-17 12:57:06.986 GMThelloGCSt6b7i1lkfdow Event: 1746926478029871
+2020-11-17 12:57:06.986 GMThelloGCSt6b7i1lkfdow Event Type: google.storage.object.finalize
+2020-11-17 12:57:06.986 GMThelloGCSt6b7i1lkfdow Bucket: epa2020rd
+2020-11-17 12:57:06.986 GMThelloGCSt6b7i1lkfdow File: package.json
+2020-11-17 12:57:06.986 GMThelloGCSt6b7i1lkfdow Metageneration: 1
+2020-11-17 12:57:06.986 GMThelloGCSt6b7i1lkfdow Created: 2020-11-17T12:57:05.124Z
+2020-11-17 12:57:06.986 GMThelloGCSt6b7i1lkfdow Updated: 2020-11-17T12:57:05.124Z
+2020-11-17 12:57:06.991 GMThelloGCSt6b7i1lkfdow Function execution took 402 ms, finished with status: 'ok'
