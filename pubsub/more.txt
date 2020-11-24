@@ -1,0 +1,78 @@
+D:
+What do you see?
+
+ryandeering1@cloudshell:~/pubsub (epa2020-290310)$ gcloud pubsub topics publish newsfeed-topic --message="Hi Everyone!"
+messageIds:
+- '1737097713661311'
+
+
+E: Recieve Messages
+
+ryandeering1@cloudshell:~/pubsub (epa2020-290310)$ gcloud pubsub subscriptions pull newsfeed-sub --auto-ack
+┌──────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│     DATA     │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├──────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Hi Everyone! │ 1737097713661311 │              │            │                  │
+└──────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+
+Exercise 1:
+
+gcloud pubsub subscriptions create newsfeed-sub-2 --topic=newsfeed-topic
+
+gcloud pubsub topics publish newsfeed-topic --message="Hi Everyone! This should have 2 subscribers!"
+
+gcloud pubsub subscriptions pull newsfeed-sub --auto-ack
+gcloud pubsub subscriptions pull newsfeed-sub-2 --auto-ack
+
+Exercise 2:
+
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 0 │ 1737132684184710 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+┌───────────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 1 │ 1737133346046328 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+┌───────────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 2 │ 1737133068762088 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+┌───────────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 3 │ 1737140872258666 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+┌───────────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 4 │ 1737132784699782 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+┌───────────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 5 │ 1737133172217216 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+┌───────────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 6 │ 1737133912522013 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+┌───────────────────┬──────────────────┬──────────────┬────────────┬──────────────────┐
+│        DATA       │    MESSAGE_ID    │ ORDERING_KEY │ ATTRIBUTES │ DELIVERY_ATTEMPT │
+├───────────────────┼──────────────────┼──────────────┼────────────┼──────────────────┤
+│ Message number: 7 │ 1737133123419528 │              │            │                  │
+└───────────────────┴──────────────────┴──────────────┴────────────┴──────────────────┘
+...etc
+
+Exercise 3:
+
+ryandeering1@cloudshell:~/pubsub (epa2020-290310)$ gcloud pubsub subscriptions create newsfeed-sub-inorder --topic=newsfeed-topic --enable-mes
+sage-ordering
+Created subscription [projects/epa2020-290310/subscriptions/newsfeed-sub-inorder].
+
+
+
+
